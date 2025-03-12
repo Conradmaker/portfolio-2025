@@ -1,7 +1,7 @@
-import {dirname} from "path";
-import {fileURLToPath} from "url";
-import {FlatCompat} from "@eslint/eslintrc";
-import js from "@eslint/js";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,13 +18,13 @@ const eslintConfig = [
       browser: true,
       node: true,
     },
-    extends: ["eslint:recommended", "next"],
-    plugins: ["prettier", "@typescript-eslint"],
+    extends: ['next', 'plugin:@typescript-eslint/recommended'],
+    plugins: ['prettier', '@typescript-eslint'],
     rules: {
       // "@next/next/no-img-element": "off",
-      "react-hooks/exhaustive-deps": "off",
-      "prettier/prettier": [
-        "error",
+      'react-hooks/exhaustive-deps': 'off',
+      'prettier/prettier': [
+        'error',
         {
           singleQuote: true,
           semi: true,
@@ -32,13 +32,13 @@ const eslintConfig = [
           tabWidth: 2,
           printWidth: 102,
           bracketSpacing: true,
-          arrowParens: "avoid",
-          endOfLine: "auto",
+          arrowParens: 'avoid',
+          endOfLine: 'auto',
         },
       ],
     },
     parserOptions: {
-      parser: "@typescript-eslint/parser",
+      parser: '@typescript-eslint/parser',
     },
   }),
   // ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
