@@ -3,12 +3,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BarChart } from '../ui/barchart';
 import { useScroll, useTransform } from 'motion/react';
 import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 export default function SecondSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
   });
+  const [bgDark, setBgDark] = useState(false);
   const [writerState, setWriterState] = useState(false);
   const blurOpacity = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
   const cursorRotate = useTransform(scrollYProgress, [0.4, 0.5], [0, 90]);
@@ -22,13 +24,14 @@ export default function SecondSection() {
   useEffect(() => {
     function updateOpacity(a: number) {
       setWriterState(a > 0.4);
+      setBgDark(a > 0.9);
     }
     const unsubscribeX = scrollYProgress.on('change', updateOpacity);
     return () => unsubscribeX();
   }, [writerState]);
 
   return (
-    <div ref={containerRef} className="relative h-[10000px] overflow-clip">
+    <div ref={containerRef} className="relative h-[12000px] overflow-clip">
       <section className="max-w-5xl h-screen flex flex-col justify-center mx-auto sticky top-0">
         <h2 className="text-left font-bold leading-snug tracking-wide space-y-4">
           <p className="text-6xl">한국에는 많은 개발자들이 있습니다.</p>
@@ -76,7 +79,10 @@ export default function SecondSection() {
               그렇다면 저를 주목해야 할 이유는 무엇일까요?
             </motion.div>
             <motion.div
-              className="ml-2 w-2.5 h-16 bg-blue-500 rounded-md"
+              className={cn(
+                'ml-2 w-2.5 h-16 rounded-md transition-colors duration-500 transition-none',
+                bgDark ? 'bg-blue-950' : 'bg-blue-500',
+              )}
               style={{
                 rotate: cursorRotate,
                 width: cursorW,
