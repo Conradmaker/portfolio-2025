@@ -10,28 +10,29 @@ export default function SecondSection() {
   const { scrollYProgress } = useScroll({
     target: containerRef,
   });
-  const [bgDark, setBgDark] = useState(false);
+  const [chartAct, setChartAct] = useState(false);
   const [writerState, setWriterState] = useState(false);
-  const blurOpacity = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
+  const blurOpacity = useTransform(scrollYProgress, [0.1, 0.25], [0, 1]);
   const cursorRotate = useTransform(scrollYProgress, [0.4, 0.5], [0, 90]);
   const cursorW = useTransform(scrollYProgress, [0.35, 0.4], [881, 64]);
   const cursorH = useTransform(scrollYProgress, [0.35, 0.4], [21, 10]);
   const cursorX = useTransform(scrollYProgress, [0.3, 0.4], [44, 0]);
   const cursorY = useTransform(scrollYProgress, [0.3, 0.4], [-30, 0]);
-  const textWidth = useTransform(scrollYProgress, [0.5, 0.75], [1, 875]);
-  const cursorScaleX = useTransform(scrollYProgress, [0.9, 1], [1, 300]);
-  const cursorScaleY = useTransform(scrollYProgress, [0.9, 1], [1, 50]);
+  const textWidth = useTransform(scrollYProgress, [0.5, 0.7], [1, 875]);
+  const cursorScaleX = useTransform(scrollYProgress, [0.75, 1], [1, 300]);
+  const cursorScaleY = useTransform(scrollYProgress, [0.75, 1], [1, 50]);
+  const cursorBG = useTransform(scrollYProgress, [0.75, 1], ['#2B7FFF', '#162456']);
   useEffect(() => {
     function updateOpacity(a: number) {
       setWriterState(a > 0.4);
-      setBgDark(a > 0.9);
+      setChartAct(a > 0.01);
     }
     const unsubscribeX = scrollYProgress.on('change', updateOpacity);
     return () => unsubscribeX();
   }, [writerState]);
 
   return (
-    <div ref={containerRef} className="relative h-[12000px] overflow-clip">
+    <div id="chart" ref={containerRef} className="relative h-[9000px] overflow-clip">
       <section className="max-w-5xl h-screen flex flex-col justify-center mx-auto sticky top-0">
         <h2 className="text-left font-bold leading-snug tracking-wide space-y-4">
           <p className="text-6xl">한국에는 많은 개발자들이 있습니다.</p>
@@ -65,6 +66,7 @@ export default function SecondSection() {
             yAxisWidth={120}
             barCategoryGap={2}
             layout="vertical"
+            animation={chartAct}
           ></BarChart>
         </div>
         <motion.div
@@ -81,7 +83,6 @@ export default function SecondSection() {
             <motion.div
               className={cn(
                 'ml-2 w-2.5 h-16 rounded-md transition-colors duration-500 transition-none',
-                bgDark ? 'bg-blue-950' : 'bg-blue-500',
               )}
               style={{
                 rotate: cursorRotate,
@@ -91,6 +92,7 @@ export default function SecondSection() {
                 y: cursorY,
                 scaleX: cursorScaleX,
                 scaleY: cursorScaleY,
+                background: cursorBG,
               }}
             />
           </>

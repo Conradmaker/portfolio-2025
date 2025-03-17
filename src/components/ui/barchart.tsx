@@ -453,10 +453,12 @@ interface BarChartProps extends React.HTMLAttributes<HTMLDivElement> {
   legendPosition?: 'left' | 'center' | 'right';
   tooltipCallback?: (tooltipCallbackContent: TooltipProps) => void;
   customTooltip?: React.ComponentType<TooltipProps>;
+  animation?: boolean;
 }
 
 const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>((props, forwardedRef) => {
   const {
+    animation = false,
     data = [],
     categories = [],
     index,
@@ -732,7 +734,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>((props, forward
               stackId={stacked ? 'stack' : undefined}
               radius={[2, 2, 2, 2]}
               fill=""
-              //   isAnimationActive={false}
+              isAnimationActive={animation}
               onClick={onBarClick}
             />
           ))}
