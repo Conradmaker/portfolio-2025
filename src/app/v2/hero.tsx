@@ -29,7 +29,7 @@ export default function Hero() {
       <section className="max-w-[1600px] mx-auto" ref={containerRef}>
         <motion.div
           style={{ scale: heroScale, y: heroY }}
-          className="h-[760px] w-full bg-gray-100 rounded-xl relative"
+          className="h-[760px] w-full bg-gray-100 rounded-2xl relative"
         >
           <div className="flex items-center h-full pl-14">
             <div className="space-y-24 flex-1">
