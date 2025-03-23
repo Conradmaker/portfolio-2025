@@ -5,7 +5,6 @@ import { ThemeProvider } from '../provider/theme-provider';
 import { cn } from '../lib/utils';
 import React from 'react';
 import { LenisProvider } from '@/provider/lenis-provider';
-import Header from '@/components/Header';
 
 const wanted = localFont({
   src: [
@@ -55,10 +54,7 @@ export default function RootLayout({
     <html lang="ko" className={cn(wanted.variable, 'font-sans')}>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <LenisProvider>
-            <Header />
-            {children}
-          </LenisProvider>
+          <LenisProvider>{children}</LenisProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -97,7 +97,6 @@ export default function Work() {
             </div>
           </div>
         </li>
-        <li className="my-20 w-full h-px bg-muted-foreground/60"></li>
       </ul>
     </section>
   );

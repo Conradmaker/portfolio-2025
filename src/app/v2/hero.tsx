@@ -11,21 +11,8 @@ export default function Hero() {
   });
   const heroScale = useTransform(scrollY, [0, 500, 700], [1, 0.9, 0.85]);
   const heroY = useTransform(scrollY, [0, 800], [0, 800]);
-  const headerBorder = useTransform(scrollY, [750, 800], [0, 1]);
   return (
     <>
-      <motion.header className="w-full sticky top-0 z-10 bg-white/30 backdrop-blur-sm">
-        <div className="flex items-center h-[72px] text-3xl group/logo cursor-pointer relative max-w-[1600px] mx-auto w-full">
-          <p className="group-hover/logo:text-white text-blue-700 transition-all duration-300 relative z-10">
-            Ryuwongeun
-          </p>
-          <div className="group-hover/logo:w-44 w-0 h-9 left-0 bg-blue-700 transition-all duration-300 absolute"></div>
-        </div>
-        <motion.div
-          className="h-px bg-slate-200 w-full"
-          style={{ opacity: headerBorder }}
-        ></motion.div>
-      </motion.header>
       <section className="max-w-[1600px] mx-auto" ref={containerRef}>
         <motion.div
           style={{ scale: heroScale, y: heroY }}
