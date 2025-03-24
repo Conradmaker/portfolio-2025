@@ -13,7 +13,7 @@ export default function Hero() {
   const heroY = useTransform(scrollY, [0, 800], [0, 800]);
   return (
     <>
-      <section className="max-w-[1600px] mx-auto" ref={containerRef}>
+      <section id="about" className="max-w-[1600px] mx-auto" ref={containerRef}>
         <motion.div
           style={{ scale: heroScale, y: heroY }}
           className="h-[760px] w-full bg-gray-100 rounded-2xl relative"

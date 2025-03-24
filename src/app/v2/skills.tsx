@@ -1,9 +1,11 @@
 'use client';
 
+import { useUiStore } from '@/modules/zustand/ui';
 import { useScroll, useTransform, motion } from 'motion/react';
 import React, { useRef } from 'react';
 
 export default function Skills() {
+  const { viewPort } = useUiStore();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -14,19 +16,19 @@ export default function Skills() {
 
   const slideHeight = useTransform(scrollYProgress, [0, 0.3], [520, 700]);
   const slideY = useTransform(scrollYProgress, [0, 0.3], ['0vh', '-18vh']);
-  const maxW = useTransform(scrollYProgress, [0, 0.3], [1600, window.innerWidth]);
-  const marginLeft = useTransform(scrollYProgress, [0, 0.3], [0, (window.innerWidth - 1600) / 2]);
+  const maxW = useTransform(scrollYProgress, [0, 0.3], [1600, viewPort.w]);
+  const marginLeft = useTransform(scrollYProgress, [0, 0.3], [0, (viewPort.w - 1600) / 2]);
   const itemW = useTransform(scrollYProgress, [0, 0.3], [780, 440]);
 
   const scrollX = useTransform(scrollYProgress, [0.35, 1], [0, -1200]);
   return (
-    <section ref={containerRef} className="bg-white z-0 relative h-[5000px] my-60">
+    <section id="skills" ref={containerRef} className="bg-white z-0 relative h-[5000px] mt-60">
       <div className="h-screen sticky top-0 pt-24 flex-col flex gap-16">
         <motion.div
           style={{ opacity: headingOpacity, y: headingY, scale: headingScale }}
           className="flex flex-col items-center gap-4"
         >
-          <h2 className="text-black text-5xl font-medium leading-tight text-center">
+          <h2 className="text-black text-5xl duration-1000 font-medium leading-tight text-center">
             다양한 분야에서의 개발 경험과 <br />
             폭넓은 기술 스택을 프로덕트에 녹여냅니다.
           </h2>

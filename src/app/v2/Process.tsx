@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Process() {
   return (
-    <section className="second my-24 mb-44 z-0 relative max-w-[1600px] mx-auto">
+    <section id="process" className="second my-24 mb-44 z-0 relative max-w-[1600px] mx-auto">
       <div className="flex items-center justify-between">
         <h2 className="text-black text-6xl font-medium leading-tight">
           프로젝트의 ZERO에서 <br /> HERO 그 이상까지 함께할 수 있는 개발자

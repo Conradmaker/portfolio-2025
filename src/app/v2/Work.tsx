@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { LucideCircle } from 'lucide-react';
@@ -5,7 +6,7 @@ import React from 'react';
 
 export default function Work() {
   return (
-    <section className="second bg-white z-0 relative max-w-[1600px] mx-auto">
+    <section id="works" className="pt-32 bg-white z-0 relative max-w-[1600px] mx-auto">
       <div className="flex items-center justify-between">
         <h2 className="text-black text-6xl font-medium leading-tight">
           도전과 혁신으로 완성한 <br /> 압도적인 결과물들
