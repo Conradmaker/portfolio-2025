@@ -1,8 +1,8 @@
 'use client';
-import { FlipWords } from '@/components/ui/hero';
 import Svg from '@/components/ui/svg';
 import { useScroll, useTransform, motion } from 'motion/react';
 import React, { useRef } from 'react';
+import { FlipWords } from './ui/filp-words';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -16,7 +16,7 @@ export default function Hero() {
       <section id="about" className="max-w-[1600px] mx-auto" ref={containerRef}>
         <motion.div
           style={{ scale: heroScale, y: heroY }}
-          className="h-[760px] w-full bg-gray-100 rounded-2xl relative"
+          className="h-[760px] w-full bg-[#F7F8FA] rounded-2xl relative"
         >
           <div className="flex items-center h-full pl-14">
             <div className="space-y-24 flex-1">
@@ -28,7 +28,7 @@ export default function Hero() {
                     '제너럴리스트',
                     '창의적인',
                     '진짜 풀스택',
-                    'AI도 다룰줄 아는',
+                    'AI개발을 겸비한',
                     '기획력 있는',
                     '디자인에 민감한',
                   ]}
@@ -38,7 +38,9 @@ export default function Hero() {
                 <br />
                 개발자 유원근입니다.
               </h1>
-              <p className="text-foreground/60">asdasd</p>
+              <p className="text-foreground/60">
+                저는 광범위한 디지털 제품 전문 지식과 고객의 비즈니스 목표를 결합합니다.
+              </p>
             </div>
 
             <ul className="h-full grid grid-cols-2 grid-rows-3">

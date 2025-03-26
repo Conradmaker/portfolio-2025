@@ -2,7 +2,7 @@
 'use client';
 import { useScroll, useTransform, motion } from 'motion/react';
 import React, { useRef } from 'react';
-import { AspectRatio } from '../ui/aspect-ratio';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 export default function ThirdSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -43,8 +43,8 @@ export default function ThirdSection() {
   const sec4Scale = useTransform(scrollYProgress, [0.6, 0.8, 0.95, 1], [0.9, 0.9, 0.9, 0.91]);
   const sec4Rotate = useTransform(scrollYProgress, [0.6, 0.8, 0.88, 0.95, 1], [30, 0, -5, -20, -45]);
 
-  const sec4CircleScale = useTransform(scrollYProgress, [0.6, 0.8, 1], [0.1, 0.7, 2.3]);
-  const sec4CircleY = useTransform(scrollYProgress, [0.6, 0.8, 1], [-400, -400, 1200]);
+  const sec4CircleScale = useTransform(scrollYProgress, [0.6, 0.85, 1], [0.1, 0.6, 2.3]);
+  const sec4CircleY = useTransform(scrollYProgress, [0.6, 0.85, 1], [-1000, -400, 1200]);
 
   const background = useTransform(
     scrollYProgress,
@@ -199,9 +199,10 @@ export default function ThirdSection() {
                 className="size-[100vw] bg-pink-300 rounded-full flex items-center justify-center absolute"
                 style={{ scale: sec4CircleScale, y: sec4CircleY }}
               ></motion.div>
-              <h2 className="text-5xl font-bold text-black relative text-center space-y-2.5">
-                <p>기술의 가치를 알고</p>
-                <p>성장시킬 수 있는 개발자</p>
+              <p className="text-8xl font-normal">개인의 성장이 팀의 성장이기에</p>
+              <h2 className="text-8xl leading-tight font-bold text-white absolute text-center">
+                지식의 가치를 알고, <br />
+                끝없이 성장하는 개발자
               </h2>
             </motion.div>
           </motion.div>

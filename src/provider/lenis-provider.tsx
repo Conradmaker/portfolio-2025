@@ -4,22 +4,24 @@ import * as React from 'react';
 import Lenis from 'lenis';
 import { useUiStore } from '@/modules/zustand/ui';
 
-const lenis = new Lenis();
+let lenis = typeof window !== 'undefined' ? new Lenis() : null;
+
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   const { scrollAvailable, setScrollAvailable } = useUiStore();
 
   React.useEffect(() => {
+    if (!lenis) lenis = new Lenis();
     setScrollAvailable(true);
     const raf = (time: number) => {
-      lenis.raf(time);
+      lenis!.raf(time);
       requestAnimationFrame(raf);
     };
     requestAnimationFrame(raf);
   }, []);
 
   React.useEffect(() => {
-    if (scrollAvailable) lenis.start();
-    else lenis.stop();
+    if (scrollAvailable) lenis!.start();
+    else lenis!.stop();
   }, [scrollAvailable]);
 
   return <>{children}</>;

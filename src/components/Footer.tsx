@@ -23,7 +23,7 @@ export default function Footer() {
             <li className="flex-col flex w-44 gap-4">
               <span className="text-sm">EMAIL :</span>
               <Link href="mailto:yhg0337@gmail.com">
-                <p className="transition-all duration-300 group/link self-end flex items-center hover:bg-[#001713] bg-gray-100 p-1 rounded-full text-sm gap-1 pl-3 cursor-pointer">
+                <p className="transition-all duration-300 group/link self-end flex items-center hover:bg-[#001713] bg-[#F7F8FA] p-1 rounded-full text-sm gap-1 pl-3 cursor-pointer">
                   <span className="group-hover/link:text-white transition-all duration-300">
                     yhg0337@gmail.com
                   </span>
@@ -37,7 +37,7 @@ export default function Footer() {
               <Link
                 href="https://github.com/Conradmaker"
                 target="_blank"
-                className="transition-all duration-300 group/link self-end flex items-center hover:bg-[#001713] bg-gray-100 p-1 rounded-full text-sm gap-1 pl-3 cursor-pointer"
+                className="transition-all duration-300 group/link self-end flex items-center hover:bg-[#001713] bg-[#F7F8FA] p-1 rounded-full text-sm gap-1 pl-3 cursor-pointer"
               >
                 <span className="group-hover/link:text-white transition-all duration-300">
                   @conradmaker
@@ -51,7 +51,7 @@ export default function Footer() {
               <Link
                 href="https://velog.io/@yhg0337/posts"
                 target="_blank"
-                className="transition-all duration-300 group/link self-end flex items-center hover:bg-[#001713] bg-gray-100 p-1 rounded-full text-sm gap-1 pl-3 cursor-pointer"
+                className="transition-all duration-300 group/link self-end flex items-center hover:bg-[#001713] bg-[#F7F8FA] p-1 rounded-full text-sm gap-1 pl-3 cursor-pointer"
               >
                 <span className="group-hover/link:text-white transition-all duration-300">
                   @Conrad.log

@@ -1,9 +1,9 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import { BarChart } from '../ui/barchart';
 import { useScroll, useTransform } from 'motion/react';
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
+import { BarChart } from '@/components/ui/barchart';
 
 export default function SecondSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -22,6 +22,7 @@ export default function SecondSection() {
   const cursorScaleX = useTransform(scrollYProgress, [0.75, 1], [1, 300]);
   const cursorScaleY = useTransform(scrollYProgress, [0.75, 1], [1, 50]);
   const cursorBG = useTransform(scrollYProgress, [0.75, 1], ['#2B7FFF', '#162456']);
+  const cursorRadius = useTransform(scrollYProgress, [0.1, 0.25, 0.75, 0.78], [4, 2, 2, 0]);
   useEffect(() => {
     function updateOpacity(a: number) {
       setWriterState(a > 0.4);
@@ -70,7 +71,7 @@ export default function SecondSection() {
           ></BarChart>
         </div>
         <motion.div
-          className="absolute bg-slate-100/90 h-full top-0 -right-32 -left-32 z-10 backdrop-blur-lg flex items-center justify-center"
+          className="absolute bg-white/70 h-full top-0 -right-32 -left-32 z-10 backdrop-blur-lg flex items-center justify-center"
           style={{ opacity: blurOpacity }}
         >
           <>
@@ -81,9 +82,7 @@ export default function SecondSection() {
               그렇다면 저를 주목해야 할 이유는 무엇일까요?
             </motion.div>
             <motion.div
-              className={cn(
-                'ml-2 w-2.5 h-16 rounded-md transition-colors duration-500 transition-none',
-              )}
+              className={cn('ml-2 w-2.5 h-16 transition-colors duration-500 transition-none')}
               style={{
                 rotate: cursorRotate,
                 width: cursorW,
@@ -93,6 +92,7 @@ export default function SecondSection() {
                 scaleX: cursorScaleX,
                 scaleY: cursorScaleY,
                 background: cursorBG,
+                borderRadius: cursorRadius,
               }}
             />
           </>

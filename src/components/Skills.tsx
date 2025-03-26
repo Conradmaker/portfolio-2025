@@ -44,7 +44,7 @@ export default function Skills() {
           <motion.ul className="flex flex-row justify-start gap-8 h-full" style={{ x: scrollX }}>
             <motion.li
               style={{ width: itemW, marginLeft: marginLeft }}
-              className="bg-gray-100 rounded-xl inline-flex flex-col h-full p-7 relative"
+              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
             >
               <p className="font-medium text-4xl flex-1">웹, 브라우저 익스텐션</p>
               <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
@@ -61,7 +61,7 @@ export default function Skills() {
             </motion.li>
             <motion.li
               style={{ width: itemW }}
-              className="bg-gray-100 rounded-xl inline-flex flex-col h-full p-7 relative"
+              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
             >
               <p className="font-medium text-4xl flex-1">서버</p>
               <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
@@ -77,7 +77,7 @@ export default function Skills() {
             </motion.li>
             <motion.li
               style={{ width: itemW }}
-              className="bg-gray-100 rounded-xl inline-flex flex-col h-full p-7 relative"
+              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
             >
               <p className="font-medium text-4xl flex-1">모바일</p>
               <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
@@ -93,7 +93,7 @@ export default function Skills() {
             </motion.li>
             <motion.li
               style={{ width: itemW }}
-              className="bg-gray-100 rounded-xl inline-flex flex-col h-full p-7 relative"
+              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
             >
               <p className="font-medium text-4xl flex-1">데이터베이스</p>
               <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
@@ -109,7 +109,7 @@ export default function Skills() {
             </motion.li>
             <motion.li
               style={{ width: itemW }}
-              className="bg-gray-100 rounded-xl inline-flex flex-col h-full p-7 relative"
+              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
             >
               <p className="font-medium text-4xl flex-1">클라우드, 인프라</p>
               <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
@@ -126,7 +126,7 @@ export default function Skills() {
             </motion.li>
             <motion.li
               style={{ width: itemW }}
-              className="bg-gray-100 rounded-xl inline-flex flex-col h-full p-7 relative"
+              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
             >
               <p className="font-medium text-4xl flex-1">AI</p>
               <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />

@@ -52,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={cn(wanted.variable, 'font-sans')}>
+    <html lang="ko" className={cn(wanted.variable, 'font-sans lenis')}>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <LenisProvider>
