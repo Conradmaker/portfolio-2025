@@ -6,6 +6,9 @@ import { cn } from '../lib/utils';
 import React from 'react';
 import { LenisProvider } from '@/provider/lenis-provider';
 import InitializeProvider from '@/provider/initialize-provider';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import PageTransitionProvider from '@/provider/transition-provider';
 
 const wanted = localFont({
   src: [
@@ -56,8 +59,10 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <LenisProvider>
+            <Header />
             <InitializeProvider />
-            {children}
+            <PageTransitionProvider>{children}</PageTransitionProvider>
+            <Footer />
           </LenisProvider>
         </ThemeProvider>
       </body>
