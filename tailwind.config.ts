@@ -54,34 +54,20 @@ const config: Config = {
           },
           to: { opacity: '1', transform: 'translate(-50%, -50%) scale(1)' },
         },
-        drawerSlideLeftAndFade: {
-          from: { opacity: '0', transform: 'translateX(100%)' },
-          to: { opacity: '1', transform: 'translateX(0)' },
-        },
-        drawerSlideRightAndFade: {
-          from: { opacity: '1', transform: 'translateX(0)' },
-          to: { opacity: '0', transform: 'translateX(100%)' },
-        },
       },
-      fontFamily: {
-        sans: ['var(--font-wanted)'],
+      animation: {
+        hide: 'hide 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideDownAndFade: 'slideDownAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideLeftAndFade: 'slideLeftAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideUpAndFade: 'slideUpAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideRightAndFade: 'slideRightAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        // Accordion
+        accordionOpen: 'accordionOpen 150ms cubic-bezier(0.87, 0, 0.13, 1)',
+        accordionClose: 'accordionClose 150ms cubic-bezier(0.87, 0, 0.13, 1)',
+        // Dialog
+        dialogOverlayShow: 'dialogOverlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        dialogContentShow: 'dialogContentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
       },
-    },
-    animation: {
-      hide: 'hide 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-      slideDownAndFade: 'slideDownAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-      slideLeftAndFade: 'slideLeftAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-      slideUpAndFade: 'slideUpAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-      slideRightAndFade: 'slideRightAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-      // Accordion
-      accordionOpen: 'accordionOpen 150ms cubic-bezier(0.87, 0, 0.13, 1)',
-      accordionClose: 'accordionClose 150ms cubic-bezier(0.87, 0, 0.13, 1)',
-      // Dialog
-      dialogOverlayShow: 'dialogOverlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-      dialogContentShow: 'dialogContentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-      // Drawer
-      drawerSlideLeftAndFade: 'drawerSlideLeftAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-      drawerSlideRightAndFade: 'drawerSlideRightAndFade 150ms ease-in',
     },
   },
 } satisfies Config;

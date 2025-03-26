@@ -7,6 +7,11 @@ interface UiState {
   setNavOpen: (payload: boolean) => void;
   viewPort: { w: number; h: number };
   setViewPort: (payload: { w: number; h: number }) => void;
+  scrollAvailable: boolean;
+  setScrollAvailable: (payload: boolean) => void;
+
+  projectModal: null | 'realiz';
+  toggleProjectModal: (payload: 'realiz' | null) => void;
 }
 
 export const useUiStore = create(
@@ -21,6 +26,16 @@ export const useUiStore = create(
       setViewPort: payload =>
         set(state => {
           state.viewPort = payload;
+        }),
+      scrollAvailable: false,
+      setScrollAvailable: payload =>
+        set(state => {
+          state.scrollAvailable = payload;
+        }),
+      projectModal: null,
+      toggleProjectModal: payload =>
+        set(state => {
+          state.projectModal = payload;
         }),
     })),
     {
