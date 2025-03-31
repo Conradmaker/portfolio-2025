@@ -79,7 +79,7 @@ export default function Merit() {
                 속도를 매우 중요하게 생각합니다.
               </h4>
               <p className="text-base text-background/70 leading-relaxed">
-                누군가는 급할수록 실수가 많아진다고 말합니다. <br />
+                누군가는 급할수록 실수가 많아지니 돌아가라고 말합니다. <br />
                 하지만, 저는 빠르게 실패하고 제대로 회복하는 것이 더 중요하다고 생각합니다.
               </p>
             </div>
@@ -114,24 +114,21 @@ export default function Merit() {
           className="pl-24 text-lg text-foreground/80 leading-relaxed "
           style={{ y: descY, opacity: descOpacity }}
         >
-          <li className="flex items-center">
-            <LucideDot /> 문서의 늪 빠지지 않고 제품과 전략을 구체화할 수 있습니다.
-          </li>
-          <li className="flex items-center">
-            <LucideDot />
-            인터랙티브 프로토타입을 단순 UI가 아닌 코드로 빠르게 제작하여 아이디어를 검증할 수
-            있습니다.
-          </li>
-          <li className="flex items-center">
-            <LucideDot />
-            개발팀뿐만 아닌 다른분야의 팀원과도 직접 협업하여 신속하게 반복하며 제품을 개선합니다.
-          </li>
-          <li className="flex items-center">
-            <LucideDot />
-            성공을 위한 소프트웨어 개발팀빌딩에 기여하고 구축하며 육성합니다.
-          </li>
+          {mainMerits.map((merit, idx) => (
+            <li key={idx} className="flex items-center">
+              <LucideDot />
+              {merit}
+            </li>
+          ))}
         </motion.ul>
       </div>
     </section>
   );
 }
+
+const mainMerits = [
+  '문서의 늪 빠지지 않고 제품과 전략을 구체화할 수 있습니다.',
+  '인터랙티브 프로토타입을 단순 UI가 아닌 코드로 빠르게 제작하여 아이디어를 검증할 수 있습니다.',
+  '개발팀뿐만 아닌 다른분야의 팀원과도 직접 협업하여 신속하게 반복하며 제품을 개선합니다.',
+  '성공을 위한 소프트웨어 개발팀빌딩에 기여하고 구축하며 육성합니다.',
+];

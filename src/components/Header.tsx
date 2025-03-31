@@ -4,7 +4,13 @@ import { useScroll, useTransform, motion, AnimatePresence, Variants } from 'moti
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, LucideBookOpenText, LucideGithub, LucideMail } from 'lucide-react';
+import {
+  ChevronDown,
+  LucideBookOpenText,
+  LucideGithub,
+  LucideMail,
+  LucideMessageCircle,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
@@ -13,13 +19,20 @@ const mainNav = [
   { name: 'Skills', to: 6600 },
   { name: 'Works', to: 12700 },
 ];
-const contacts = [
+export const contacts = [
   {
     type: 'Email',
     label: 'yhg0337@gmail.com',
     icon: () => <LucideMail className="size-6 p-1 bg-white rounded-full" />,
     href: 'mailto:yhg0337@gmail.com',
     target: undefined,
+  },
+  {
+    type: 'Kakaotalk',
+    label: 'KakaoTalk@유원근',
+    icon: () => <LucideMessageCircle className="size-6 p-1 bg-white rounded-full" />,
+    href: 'https://open.kakao.com/o/snq38Hoh',
+    target: '_blank',
   },
   {
     type: 'Github',
@@ -29,7 +42,7 @@ const contacts = [
     target: '_blank',
   },
   {
-    type: 'Velog',
+    type: 'Blog',
     label: '@Conrad.log',
     icon: () => <LucideBookOpenText className="size-6 p-1 bg-white rounded-full" />,
     href: 'https://velog.io/@yhg0337/posts',
