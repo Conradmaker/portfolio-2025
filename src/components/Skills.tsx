@@ -34,7 +34,7 @@ export default function Skills() {
           </h2>
           <p className="text-xl text-foreground/60 text-center max-w-3xl mt-4">
             웹사이트, 모바일 앱, 브라우저 확장 프로그램부터 백엔드 시스템까지 다양한 플랫폼에서의 개발
-            경험을 통해 사용자와 비즈니스 요구사항을 모두 충족하는 최적의 솔루션을 제공합니다
+            경험을 통해 사용자와 팀의 요구사항을 모두 충족하는 결과물을 만들어냅니다.
           </p>
         </motion.div>
         <motion.div
@@ -42,107 +42,114 @@ export default function Skills() {
           className="mx-auto flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none]"
         >
           <motion.ul className="flex flex-row justify-start gap-8 h-full" style={{ x: scrollX }}>
-            <motion.li
-              style={{ width: itemW, marginLeft: marginLeft }}
-              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
-            >
-              <p className="font-medium text-4xl flex-1">웹, 브라우저 익스텐션</p>
-              <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
-              <ul className="flex flex-wrap gap-x-2 gap-y-4">
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">React</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Next.js</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Vue.js</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Web Animations</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Chromium Engine</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Vanila JS</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Zustand</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Tailwind</li>
-              </ul>
-            </motion.li>
-            <motion.li
-              style={{ width: itemW }}
-              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
-            >
-              <p className="font-medium text-4xl flex-1">서버</p>
-              <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
-              <ul className="flex flex-wrap gap-x-2 gap-y-4">
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Nodejs</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Express</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Fastify</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Nestjs</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Ruby on Rails</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Spring</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Crawling</li>
-              </ul>
-            </motion.li>
-            <motion.li
-              style={{ width: itemW }}
-              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
-            >
-              <p className="font-medium text-4xl flex-1">모바일</p>
-              <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
-              <ul className="flex flex-wrap gap-x-2 gap-y-4">
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">React-Native</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Code Push</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Fastlane</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Native App API</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Expo</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Java</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Objective-C</li>
-              </ul>
-            </motion.li>
-            <motion.li
-              style={{ width: itemW }}
-              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
-            >
-              <p className="font-medium text-4xl flex-1">데이터베이스</p>
-              <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
-              <ul className="flex flex-wrap gap-x-2 gap-y-4">
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">MySQL / PSQL / ORACLE</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">MongoDB</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">PlanetScale</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Vitess</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Elastic Search</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Redis</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">And</li>
-              </ul>
-            </motion.li>
-            <motion.li
-              style={{ width: itemW }}
-              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
-            >
-              <p className="font-medium text-4xl flex-1">클라우드, 인프라</p>
-              <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
-              <ul className="flex flex-wrap gap-x-2 gap-y-4">
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Docker</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">CI & CD</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Git</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Azure</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">GCP</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">AWS</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Naver / NHN</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Alibaba Cloud</li>
-              </ul>
-            </motion.li>
-            <motion.li
-              style={{ width: itemW }}
-              className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
-            >
-              <p className="font-medium text-4xl flex-1">AI</p>
-              <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
-              <ul className="flex flex-wrap gap-x-2 gap-y-4">
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Personalizer</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">HF</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">Transformer</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">LLM Finetuning</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">OpenCV</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl">AWS</li>
-                <li className="px-6 py-3 bg-white rounded-full text-2xl"></li>
-              </ul>
-            </motion.li>
+            {skillSet.map((skills, idx) => {
+              return (
+                <motion.li
+                  key={skills.sector}
+                  style={{ width: itemW, marginLeft: idx === 0 ? marginLeft : 0 }}
+                  className="bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-7 relative"
+                >
+                  <p className="font-medium text-4xl flex-1">{skills.sector}</p>
+                  <div className="rounded-full bg-blue-500 size-7 absolute right-8 top-8" />
+                  <ul className="flex flex-wrap gap-x-2 gap-y-4">
+                    {skills.stacks.map((stack, idx) => (
+                      <li key={idx} className="px-6 py-3 bg-white rounded-full text-xl">
+                        {stack}
+                      </li>
+                    ))}
+                    <li className="px-6 py-3 rounded-full text-lg">And More..</li>
+                  </ul>
+                </motion.li>
+              );
+            })}
           </motion.ul>
         </motion.div>
       </div>
     </section>
   );
 }
+const skillSet = [
+  {
+    sector: '웹, 브라우저 익스텐션',
+    stacks: [
+      'React',
+      'Next.js',
+      'Vue.js',
+      'Web Animations',
+      'Chromium Engine (CRX)',
+      'Vanila JS',
+      'Zustand',
+      'Tailwind',
+    ],
+  },
+  {
+    sector: '서버',
+    stacks: [
+      'Nodejs',
+      'Fastify',
+      'Express.js',
+      'Nest.js',
+      'Kysely',
+      'Prisma',
+      'Kafka',
+      'Search Engine',
+      'Crawling',
+      'Serverless',
+      'Spring',
+      'Rails',
+    ],
+  },
+  {
+    sector: '모바일',
+    stacks: [
+      'React-Native',
+      'Code Push',
+      'Fastlane',
+      'Native App API',
+      'Expo',
+      'Java',
+      'Objective-C',
+      'Push Notifications',
+    ],
+  },
+  {
+    sector: '데이터베이스',
+    stacks: [
+      'MySQL, PSQL, ORACLE',
+      'MongoDB',
+      'PlanetScale, Neon',
+      'Vitess',
+      'Elastic Search',
+      'Redis',
+      'AstraDB, CosmosDB',
+    ],
+  },
+  {
+    sector: '클라우드, 인프라',
+    stacks: [
+      'Docker',
+      'CI & CD',
+      'Git (+Actions)',
+      'Azure',
+      'GCP',
+      'AWS',
+      'NCP / NHN',
+      'Alibaba',
+      'Datadog, NewRelic',
+      'Whatap',
+    ],
+  },
+  {
+    sector: 'AI',
+    stacks: [
+      'Personalizer',
+      'Hugging Face',
+      'Transformer',
+      'LLM Finetuning',
+      'Computer Vision',
+      'Vertex AI',
+      'Sagemaker',
+      'OpenCV',
+    ],
+  },
+];
