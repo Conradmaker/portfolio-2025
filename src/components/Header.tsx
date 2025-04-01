@@ -98,16 +98,19 @@ export default function Header() {
       ref={containerRef}
       className="w-full bg-white/30 backdrop-blur-sm  sticky top-0 z-30 antialiased"
     >
-      <div className="flex items-center h-[72px] relative max-w-[1600px] mx-auto w-full justify-between">
+      <div className="flex items-center h-[72px] relative max-w-[1632px] mx-auto w-full justify-between px-4">
         <Link
           href="/"
           title="홈페이지"
           className="group/logo text-3xl relative flex items-center cursor-pointer"
         >
-          <Svg.Logo className="bg-slate-200/0 w-44" />
+          <Svg.Logo className="bg-slate-200/0 w-36 sm:w-44" />
           <div className="group-hover/logo:opacity-100 opacity-0 size-7 ml-1 rounded-full bg-blue-700 transition-all duration-300 absolute cursor-pointer"></div>
         </Link>
-        <ul className="flex font-medium">
+        <Button className="sm:hidden" variant="outline">
+          닫기
+        </Button>
+        <ul className="font-medium hidden sm:flex">
           {pathname === '/' &&
             mainNav.map(({ name, to }) => (
               <Button

@@ -8,8 +8,11 @@ interface UiState {
 
   navOpen: boolean;
   setNavOpen: (payload: boolean) => void;
+
+  isMobile: boolean;
   viewPort: { w: number; h: number };
   setViewPort: (payload: { w: number; h: number }) => void;
+
   scrollAvailable: boolean;
   setScrollAvailable: (payload: boolean) => void;
 
@@ -32,9 +35,11 @@ export const useUiStore = create(
           state.navOpen = payload;
         }),
 
+      isMobile: false,
       viewPort: { w: 0, h: 0 },
       setViewPort: payload =>
         set(state => {
+          state.isMobile = payload.w < 640;
           state.viewPort = payload;
         }),
 
