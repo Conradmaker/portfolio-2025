@@ -37,7 +37,10 @@ export default function Skills() {
           </p>
         </div>
         <motion.div className="flex-1 pt-12 mx-auto flex w-full overflow-hidden [scrollbar-width:none]">
-          <motion.ul className="flex flex-row justify-start h-4/5" style={{ x: scrollXMob }}>
+          <motion.ul
+            className="flex flex-row justify-start h-4/5 transition-all duration-[0.02s]"
+            style={{ x: scrollXMob }}
+          >
             {skillSet.map(skills => {
               return (
                 <li

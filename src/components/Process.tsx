@@ -5,7 +5,7 @@ export default function Process() {
   return (
     <section
       id="process"
-      className="second my-44 z-0 relative max-w-[1632px] mx-auto break-keep px-4"
+      className="second bg-white my-44 z-0 relative max-w-[1632px] mx-auto break-keep px-4"
     >
       <div className="flex flex-col xl:flex-row xl:items-end justify-between">
         <h2 className="mb-4 xl:mb-0 text-black text-[7.4vw] md:text-5xl xl:text-6xl font-semibold md:font-medium leading-snug md:leading-tight">

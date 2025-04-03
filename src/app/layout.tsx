@@ -56,8 +56,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={cn(wanted.variable, 'font-sans lenis')}>
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <body className="w-full">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          forcedTheme="light"
+          disableTransitionOnChange
+        >
           <LenisProvider>
             <Header />
             <InitializeProvider />
