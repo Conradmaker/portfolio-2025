@@ -48,7 +48,16 @@
     cubic-bezier(0.16, 1, 0.3, 1);
   --animate-drawer-slide-right-and-fade: drawer-slide-right-and-fade 150ms ease-in;
   --animate-hide: hide 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-swim: swim 800ms ease-in-out infinite alternate;
 
+  @keyframes swim {
+    from {
+      transform: translateY(3px);
+    }
+    to {
+      transform: translateY(-3px);
+    }
+  }
   @keyframes hide {
     from {
       opacity: 0;
