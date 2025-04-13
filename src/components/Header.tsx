@@ -96,7 +96,7 @@ export default function Header() {
   return (
     <motion.header
       ref={containerRef}
-      className="w-full bg-white/30 backdrop-blur-sm  sticky top-0 z-30 antialiased"
+      className="w-full bg-white/30 backdrop-blur-sm sticky top-0 z-30 antialiased"
     >
       <div className="flex items-center h-[72px] relative max-w-[1632px] mx-auto w-full justify-between px-4">
         <Link

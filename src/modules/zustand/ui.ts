@@ -16,8 +16,8 @@ interface UiState {
   scrollAvailable: boolean;
   setScrollAvailable: (payload: boolean) => void;
 
-  projectModal: null | 'realiz';
-  toggleProjectModal: (payload: 'realiz' | null) => void;
+  workModal: null | string;
+  toggleWorkModal: (payload: string | null) => void;
 }
 
 export const useUiStore = create(
@@ -49,10 +49,10 @@ export const useUiStore = create(
           state.scrollAvailable = payload;
         }),
 
-      projectModal: null,
-      toggleProjectModal: payload =>
+      workModal: null,
+      toggleWorkModal: payload =>
         set(state => {
-          state.projectModal = payload;
+          state.workModal = payload;
         }),
     })),
     {
