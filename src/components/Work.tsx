@@ -1,12 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 
-import { AnimatePresence, motion, stagger, useMotionValue } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { ScrollArea, ScrollBar } from './ui/scroll-area';
-import { useRouter } from 'next/navigation';
-import useQS from '@/hooks/useQS';
 import { useUiStore } from '@/modules/zustand/ui';
-import { Button } from './ui/button';
 import {
   LucideBinoculars,
   LucideBlend,
@@ -15,19 +12,20 @@ import {
   LucidePalette,
   LucideProportions,
   LucideServer,
-  LucideSparkle,
   LucideSparkles,
   LucideTabletSmartphone,
-  LucideX,
 } from 'lucide-react';
+
 import { cn } from '@/lib/utils';
+import { Button, buttonVariants } from './ui/button';
+import { LucideFilter } from 'lucide-react';
 
 const data = [
   {
     title: 'REALIZ-FINANCE 웹',
     slug: 'realiz-finance',
     description: '금융시장 리얼타임 데이터 API 스토어',
-    image: '/realiz.png',
+    image: '/mock/realiz_finance.png',
     image2: '/realiz.png',
     stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     platforms: ['웹', '모바일', 'CRX', '서버'],
@@ -45,9 +43,9 @@ const data = [
   },
   {
     title: 'REALIZ 웹',
-    slug: 'realiz-so',
+    slug: 'realiz',
     description: 'AI 모델 마켓플레이스',
-    image: '/realiz.png',
+    image: '/mock/realiz.png',
     image2: '/realiz.png',
     stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     platforms: ['웹', '모바일', 'CRX', '서버'],
@@ -55,7 +53,7 @@ const data = [
   },
   {
     title: 'REALIZ 백엔드',
-    slug: 'realiz-so',
+    slug: 'realiz-server',
     description: 'AI 모델 마켓플레이스',
     image: '/realiz.png',
     image2: '/realiz.png',
@@ -65,9 +63,9 @@ const data = [
   },
   {
     title: '턴업 APP',
-    slug: 'turn-up',
+    slug: 'turnup_app',
     description: '영상, 이미지기반 상품검색 서비스 플랫폼',
-    image: '/realiz.png',
+    image: '/mock/turnup_app.png',
     image2: '/realiz.png',
     stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     platforms: ['웹', '모바일', 'CRX', '서버'],
@@ -75,9 +73,9 @@ const data = [
   },
   {
     title: '턴업 브라우저 확장 프로그램',
-    slug: 'turn-up',
+    slug: 'turnup_crx',
     description: '영상, 이미지기반 상품검색 서비스 플랫폼',
-    image: '/realiz.png',
+    image: '/mock/turnup_crx.png',
     image2: '/realiz.png',
     stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     platforms: ['웹', '모바일', 'CRX', '서버'],
@@ -85,7 +83,7 @@ const data = [
   },
   {
     title: '턴업 백오피스 웹',
-    slug: 'turn-up',
+    slug: 'turnup_bo',
     description: '영상, 이미지기반 상품검색 서비스 플랫폼',
     image: '/realiz.png',
     image2: '/realiz.png',
@@ -97,7 +95,7 @@ const data = [
     title: '턴업 랜딩페이지 v1',
     slug: 'turn-up',
     description: '영상, 이미지기반 상품검색 서비스 플랫폼',
-    image: '/realiz.png',
+    image: '/mock/turnup_web.png',
     image2: '/realiz.png',
     stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     platforms: ['웹', '모바일', 'CRX', '서버'],
@@ -114,30 +112,20 @@ const data = [
     filter: ['백엔드', 'AI'],
   },
   {
-    title: '라이즈 APP',
-    slug: 'rise',
-    description: '라이브커머스 통합 플랫폼',
-    image: '/realiz.png',
-    image2: '/realiz.png',
-    stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
-    platforms: ['웹', '모바일', 'CRX', '서버'],
-    filter: ['프론트엔드', '앱'],
-  },
-  {
-    title: '라이즈 백엔드',
-    slug: 'rise',
-    description: '라이브커머스 통합 플랫폼',
-    image: '/realiz.png',
-    image2: '/realiz.png',
-    stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
-    platforms: ['웹', '모바일', 'CRX', '서버'],
-    filter: ['프론트엔드', '앱'],
-  },
-  {
     title: '라이즈 APP 랜딩페이지',
     slug: 'rise',
     description: '라이브커머스 통합 플랫폼',
-    image: '/realiz.png',
+    image: '/mock/rise_app_landing.png',
+    image2: '/realiz.png',
+    stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
+    platforms: ['웹', '모바일', 'CRX', '서버'],
+    filter: ['프론트엔드', '앱'],
+  },
+  {
+    title: '라이즈 인사이드 (테스트 프로덕트)',
+    slug: 'rise_inside',
+    description: '턴업 프로젝트의 시장 테스트 프로덕트',
+    image: '/mock/rise_inside.png',
     image2: '/realiz.png',
     stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     platforms: ['웹', '모바일', 'CRX', '서버'],
@@ -147,7 +135,7 @@ const data = [
     title: '라이즈 APP',
     slug: 'rise',
     description: '라이브커머스 통합 플랫폼',
-    image: '/realiz.png',
+    image: '/mock/rise_app.png',
     image2: '/realiz.png',
     stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     platforms: ['웹', '모바일', 'CRX', '서버'],
@@ -177,7 +165,7 @@ const data = [
     title: '라이즈 스튜디오 v2',
     slug: 'rise',
     description: '라이브커머스 통합 플랫폼',
-    image: '/realiz.png',
+    image: '/mock/rise_studio_v2.png',
     image2: '/realiz.png',
     stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     platforms: ['웹', '모바일', 'CRX', '서버'],
@@ -187,7 +175,7 @@ const data = [
     title: '라이즈 스튜디오 v1',
     slug: 'rise',
     description: '라이브커머스 통합 플랫폼',
-    image: '/realiz.png',
+    image: '/mock/rise_studio_v1.png',
     image2: '/realiz.png',
     stacks: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     platforms: ['웹', '모바일', 'CRX', '서버'],
@@ -220,6 +208,16 @@ const mockups = [
   'https://framerusercontent.com/images/fbX0l88J5FUzo32BiZ07WDOv4Ws.png?scale-down-to=1024',
   'https://framerusercontent.com/images/J6YhfgPCveOgb1YUftagjmWFnk.png?scale-down-to=1024',
   'https://framerusercontent.com/images/LZwYpdZOeveRvsTyIWNrqYprlaE.png?scale-down-to=1024',
+  '/mock/turnup_app.png',
+  '/mock/rise_app.png',
+  '/mock/realiz.png',
+  '/mock/turnup_crx.png',
+  '/mock/rise_studio_v1.png',
+  '/mock/rise_app_landing.png',
+  '/mock/rise_studio_v2.png',
+  '/mock/turnup_web.png',
+  '/mock/realiz_finance.png',
+  '/mock/rise_inside.png',
 ];
 
 export default function Work() {
@@ -238,6 +236,11 @@ export default function Work() {
   };
 
   const [navOpen, setNavOpen] = useState(false);
+  const [navMobileCollapsed, setNavMobileCollapsed] = useState(true);
+  const toggleCollapse = () => {
+    setScrollAvailable(!navMobileCollapsed);
+    setNavMobileCollapsed(prev => !prev);
+  };
   const [currentFilter, setCurrentFilter] = useState<string>('전체');
   const toggleFilter = (f: string) => {
     setCurrentFilter(prev => {
@@ -261,7 +264,6 @@ export default function Work() {
           </p>
         </div>
         <motion.div
-          className=""
           onViewportEnter={() => setNavOpen(true)}
           onViewportLeave={() => setNavOpen(false)}
         >
@@ -308,17 +310,17 @@ export default function Work() {
                       exit={{ opacity: 0, scale: 0.77 }}
                       transition={{ duration: 0.3 }}
                       layoutId={`content-${idx}`}
-                      className="z-10 group/card overflow-hidden h-[500px] p-6 pb-24 w-full bg-[#F7F8FA] rounded-2xl flex flex-col relative"
+                      className="z-10 group/card overflow-hidden h-[350px] sm:h-[540px] p-6 pb-24 w-full bg-[#F7F8FA] rounded-2xl flex flex-col relative"
                     >
                       <div
                         style={{ opacity: selected === idx ? 0 : 1 }}
-                        className="flex-1 flex items-center justify-center py-8 cursor-pointer duration-100"
+                        className="flex-1 flex items-center justify-center px-6 sm:px-0 sm:py-8 cursor-pointer duration-100"
                       >
                         <motion.img
                           draggable={false}
-                          src={mockups[idx % 4]}
+                          src={v.image}
                           alt="a"
-                          className="group-active:animate-ping object-cover w-full h-full group-hover/card:scale-110 group-hover/card:animate-swim transition-all duration-300"
+                          className="group-active:animate-ping object-contain sm:object-cover w-full h-full group-hover/card:scale-110 group-hover/card:animate-swim transition-all duration-300"
                         />
                       </div>
                       <div className="flex flex-col absolute bottom-0 left-0 right-0 p-6">
@@ -334,116 +336,153 @@ export default function Work() {
           </ul>
         </motion.div>
       </section>
+      <FilterNav
+        open={navOpen}
+        toggleCollapse={toggleCollapse}
+        mobileCollapsed={navMobileCollapsed}
+        currentFilter={currentFilter}
+        toggleFilter={toggleFilter}
+      />
+    </>
+  );
+}
+const FilterNav = ({
+  mobileCollapsed,
+  open,
+  currentFilter,
+  toggleFilter,
+  toggleCollapse,
+}: {
+  mobileCollapsed: boolean;
+  open: boolean;
+  currentFilter: string;
+  toggleFilter: (f: string) => void;
+  toggleCollapse: () => void;
+}) => {
+  const { isMobile } = useUiStore();
+  return (
+    <>
       <AnimatePresence>
-        {navOpen && (
-          <motion.nav
-            initial={{
-              opacity: 0,
-              y: 100,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: 100,
-            }}
-            transition={{
-              duration: 0.3,
-              ease: 'easeInOut',
-            }}
-            className="fixed bottom-14 left-1/2 -translate-x-1/2 z-20"
+        {open && mobileCollapsed && (
+          <motion.div
+            className="md:hidden fixed bottom-6 right-5 z-40"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            onClick={toggleCollapse}
           >
-            <ul className="flex items-center px-2 py-1.5 bg-[#e8eaef]/45 rounded-xl backdrop-blur-2xl shadow-lg shadow-gray-200 antialiased">
-              {filters.map(filter => (
+            <Button className="gap-0 items-center" size="lg">
+              <LucideFilter />
+              <span className="ml-1.5">필터</span>
+              {currentFilter !== '전체' && <span className="text-xs ml-0.5 mb-0.5">(1)</span>}
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {open && !mobileCollapsed && (
+          <motion.div
+            className="md:hidden fixed bottom-0 top-0 left-0 right-0 bg-black/20 z-30"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            onClick={toggleCollapse}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {open && (!mobileCollapsed || !isMobile) && (
+          <motion.nav
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="fixed flex flex-col bottom-0 left-0 right-0 md:block md:bg-transparent md:top-auto md:bottom-14 md:right-auto md:left-1/2 md:-translate-x-1/2 z-30"
+          >
+            <div className="p-3 pt-0 md:p-0">
+              <ul className="border md:border-0 relative flex flex-col w-auto gap-1 md:gap-0 md:flex-row items-center px-2 py-1.5 bg-white md:bg-[#e8eaef]/45 rounded-xl backdrop-blur-2xl shadow-xl md:shadow-lg shadow-gray-300 md:shadow-gray-200 antialiased">
+                {filters.map(filter => (
+                  <li
+                    onClick={() => toggleFilter(filter.value)}
+                    key={filter.value}
+                    className={cn(
+                      'gap-3 md:gap-1.5 relative rounded-lg flex items-center cursor-pointer font-medium py-1.5 px-5 w-full md:w-auto min-w-12 text-center hover:bg-white/60 active:bg-white/0',
+                      currentFilter === filter.value && 'md:pl-4',
+                    )}
+                  >
+                    {currentFilter === filter.value && (
+                      <motion.div
+                        layoutId="filter-active"
+                        className="absolute left-0 right-0 bottom-0 top-0 bg-[#e8eaef]/40 border border-gray-200/70 md:bg-white rounded-lg z-0 shadow-xs"
+                      />
+                    )}
+                    {isMobile ? (
+                      <p className="relative">{filter.icon}</p>
+                    ) : (
+                      currentFilter === filter.value && (
+                        <motion.p
+                          className="relative"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {filter.icon}
+                        </motion.p>
+                      )
+                    )}
+                    <p className="relative text-nowrap">{filter.value}</p>
+                  </li>
+                ))}
                 <li
-                  onClick={() => toggleFilter(filter.value)}
-                  key={filter.value}
+                  onClick={toggleCollapse}
                   className={cn(
-                    'relative rounded-lg flex items-center cursor-pointer font-medium py-1.5 px-5 min-w-12 text-center hover:bg-white/60 active:bg-white/0',
-                    currentFilter === filter.value && 'gap-1.5 pl-4',
+                    buttonVariants({ variant: 'default', size: 'lg' }),
+                    'w-full rounded-lg text-center my-4 md:hidden',
                   )}
                 >
-                  {currentFilter === filter.value && (
-                    <motion.div
-                      layoutId="filter-active"
-                      className="absolute left-0 right-0 bottom-0 top-0 bg-white rounded-lg z-0 shadow-xs"
-                    />
-                  )}
-                  {currentFilter === filter.value && (
-                    <motion.p
-                      className="relative"
-                      initial={{
-                        opacity: 0,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        y: 0,
-                      }}
-                      exit={{
-                        opacity: 0,
-                      }}
-                      transition={{
-                        duration: 0.3,
-                      }}
-                    >
-                      {filter.icon}
-                    </motion.p>
-                  )}
-                  <p className="relative">{filter.value}</p>
+                  <p className="relative text-nowrap">닫기</p>
                 </li>
-              ))}
-            </ul>
+              </ul>
+            </div>
           </motion.nav>
         )}
       </AnimatePresence>
     </>
   );
-}
-
+};
 const SelectedCard = ({ idx, onClose }: { idx: number; onClose: () => void }) => {
+  const { isMobile } = useUiStore();
   return (
-    <div className="px-2 md:px-4 xl:px-0 top-0 left-0 right-0 fixed z-50" data-lenis-prevent="true">
+    <div
+      className="px-3 md:px-4 xl:px-0 top-0 left-0 right-0 fixed z-50 flex"
+      data-lenis-prevent="true"
+    >
       <AnimatePresence>
         <motion.div
           onClick={onClose}
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 0.6,
-          }}
-          className="absolute left-0 h-screen w-full bg-black opacity-60"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          className="absolute left-0 h-screen w-full bg-black/20 backdrop-grayscale-100"
         />
       </AnimatePresence>
       <motion.div
         layoutId={`content-${idx}`}
-        initial={{
-          opacity: 0,
-          y: 100,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        exit={{
-          opacity: 0,
-          y: 100,
-        }}
-        transition={{
-          duration: 0.3,
-          ease: 'easeInOut',
-        }}
-        className="relative z-[70] p-2 bg-white max-w-5xl mt-[5vh] w-full h-[90vh] mx-auto shadow-xl rounded-xl"
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 100 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className="relative z-[70] p-2 bg-white max-w-5xl self-end mt-[7.5dvh] md:mt-[5vh] w-full h-[91dvh] md:h-[90vh] mx-auto shadow-xl rounded-xl"
       >
         <ScrollArea className="w-full px-6 antialiased h-full">
           <div className="flex flex-col mt-40">
             <p className="text-center text-xl mb-4">2024</p>
             <h1
-              className="leading-none text-center break-keep text-nowrap font-medium uppercase"
+              className="leading-none text-center break-keep text-nowrap font-semibold md:font-medium uppercase"
               style={{
-                fontSize: 900 / Math.max(data[idx].title.length, 1),
+                fontSize: (isMobile ? 500 : 900) / Math.max(data[idx].title.length, 1),
               }}
             >
               <span>
@@ -460,7 +499,7 @@ const SelectedCard = ({ idx, onClose }: { idx: number; onClose: () => void }) =>
             <div className="bg-[#F7F8FA] rounded-xl overflow-hidden h-[500px] flex-1 flex justify-center items-center">
               <motion.img
                 draggable={false}
-                src={mockups[idx % 4]}
+                src={mockups[idx % 14]}
                 alt="a"
                 className="h-full transition-all object-contain"
               />
@@ -504,7 +543,7 @@ const SelectedCard = ({ idx, onClose }: { idx: number; onClose: () => void }) =>
             <div className="bg-[#F7F8FA] rounded-xl overflow-hidden h-[500px] flex-1 flex justify-center items-center">
               <motion.img
                 draggable={false}
-                src={mockups[idx % 4]}
+                src={mockups[idx % 14]}
                 alt="a"
                 className="h-full transition-all object-contain"
               />
@@ -523,8 +562,17 @@ const SelectedCard = ({ idx, onClose }: { idx: number; onClose: () => void }) =>
             </div>
           </div>
 
+          <div className="md:hidden h-12" />
+
           <ScrollBar />
         </ScrollArea>
+        <Button
+          onClick={onClose}
+          size="lg"
+          className={cn('rounded-lg text-center md:hidden absolute bottom-3 left-3 right-3')}
+        >
+          <p className="relative text-nowrap">닫기</p>
+        </Button>
       </motion.div>
     </div>
   );
