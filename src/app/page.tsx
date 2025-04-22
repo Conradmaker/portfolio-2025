@@ -7,7 +7,7 @@ import Hero from '@/components/Hero';
 
 export default function Page() {
   return (
-    <main className="w-full relative z-20 bg-white antialiased">
+    <main className="w-full relative bg-white antialiased">
       <Hero />
       <Merit />
       <Process />

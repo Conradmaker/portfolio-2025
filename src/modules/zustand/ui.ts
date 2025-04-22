@@ -1,3 +1,4 @@
+import { Work, WorkSlugs, works } from '@/lib/workData';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
@@ -8,13 +9,16 @@ interface UiState {
 
   navOpen: boolean;
   setNavOpen: (payload: boolean) => void;
+
+  isMobile: boolean;
   viewPort: { w: number; h: number };
   setViewPort: (payload: { w: number; h: number }) => void;
+
   scrollAvailable: boolean;
   setScrollAvailable: (payload: boolean) => void;
 
-  projectModal: null | 'realiz';
-  toggleProjectModal: (payload: 'realiz' | null) => void;
+  currentWork: null | Work;
+  setCurrentWork: (payload: WorkSlugs | Work | null) => void;
 }
 
 export const useUiStore = create(
@@ -32,9 +36,11 @@ export const useUiStore = create(
           state.navOpen = payload;
         }),
 
+      isMobile: false,
       viewPort: { w: 0, h: 0 },
       setViewPort: payload =>
         set(state => {
+          state.isMobile = payload.w < 640;
           state.viewPort = payload;
         }),
 
@@ -44,10 +50,14 @@ export const useUiStore = create(
           state.scrollAvailable = payload;
         }),
 
-      projectModal: null,
-      toggleProjectModal: payload =>
+      currentWork: null,
+      setCurrentWork: payload =>
         set(state => {
-          state.projectModal = payload;
+          if (typeof payload === 'string') {
+            state.currentWork = works.find(v => v.slug === payload) || null;
+          } else {
+            state.currentWork = payload;
+          }
         }),
     })),
     {

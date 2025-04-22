@@ -20,8 +20,13 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   React.useEffect(() => {
-    if (scrollAvailable) lenis!.start();
-    else lenis!.stop();
+    if (scrollAvailable) {
+      lenis!.start();
+      document.body.style.overflow = 'auto';
+    } else {
+      lenis!.stop();
+      document.body.style.overflow = 'hidden';
+    }
   }, [scrollAvailable]);
 
   return <>{children}</>;

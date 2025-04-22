@@ -3,11 +3,11 @@ import Title from './Title';
 import { cn } from '@/lib/utils';
 
 const cc = 'rounded-xl min-h-44 flex flex-col items-center justify-center';
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
   return (
-    <div className="max-w-7xl w-full mx-auto">
+    <div className="max-w-[1632px] px-4 w-full mx-auto">
       <Title slug={slug} />
 
       <div className="grid grid-cols-7 gap-6">

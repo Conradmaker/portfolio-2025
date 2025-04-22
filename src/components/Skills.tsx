@@ -21,9 +21,54 @@ export default function Skills() {
   const itemW = useTransform(scrollYProgress, [0, 0.3], [780, 440]);
 
   const scrollX = useTransform(scrollYProgress, [0.35, 1], [0, -1200]);
+  const scrollXMob = useTransform(scrollYProgress, [0.05, 1], ['0%', '-82%']);
   return (
     <section id="skills" ref={containerRef} className="bg-white z-0 relative h-[5000px] mt-60">
-      <div className="h-screen sticky top-0 pt-24 flex-col flex gap-16">
+      {/* 모바일 */}
+      <div className="md:hidden h-screen flex sticky top-0 pt-24 flex-col">
+        <div className="flex flex-col gap-4 px-4">
+          <h2 className="text-black text-[5.3vw] font-semibold leading-snug">
+            다양한 분야에서의 개발 경험과 <br />
+            폭넓은 기술 스택을 프로덕트에 녹여냅니다.
+          </h2>
+          <p className="text-[15px] text-foreground/60 leading-relaxed break-keep">
+            웹사이트, 모바일 앱, 브라우저 확장 프로그램부터 백엔드 시스템까지 다양한 플랫폼에서의 개발
+            경험을 통해 사용자와 팀의 요구사항을 모두 충족하는 결과물을 만들어냅니다.
+          </p>
+        </div>
+        <motion.div className="flex-1 pt-12 mx-auto flex w-full overflow-hidden [scrollbar-width:none]">
+          <motion.ul
+            className="flex flex-row justify-start h-4/5 transition-all duration-[0.02s]"
+            style={{ x: scrollXMob }}
+          >
+            {skillSet.map(skills => {
+              return (
+                <li
+                  key={skills.sector}
+                  className="w-[80vw] bg-[#F7F8FA] rounded-xl inline-flex flex-col h-full p-6 relative ml-6"
+                >
+                  <p className="font-semibold text-2xl flex-1">{skills.sector}</p>
+                  <div className="rounded-full bg-blue-500 size-5 absolute right-8 top-8" />
+                  <ul className="flex flex-wrap gap-x-2 gap-y-4">
+                    {skills.stacks.map((stack, idx) => (
+                      <li
+                        key={idx}
+                        className="px-4 py-1.5 bg-white rounded-full text-base font-medium text-foreground/80"
+                      >
+                        {stack}
+                      </li>
+                    ))}
+                    <li className="px-4 py-1.5 rounded-full text-sm">And More..</li>
+                  </ul>
+                </li>
+              );
+            })}
+          </motion.ul>
+        </motion.div>
+      </div>
+
+      {/* PC */}
+      <div className="hidden md:flex h-screen sticky top-0 pt-24 flex-col gap-16">
         <motion.div
           style={{ opacity: headingOpacity, y: headingY, scale: headingScale }}
           className="flex flex-col items-center gap-4"
