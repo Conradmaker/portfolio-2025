@@ -1,3 +1,4 @@
+import { Work, WorkSlugs, works } from '@/lib/workData';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
@@ -16,8 +17,8 @@ interface UiState {
   scrollAvailable: boolean;
   setScrollAvailable: (payload: boolean) => void;
 
-  workModal: null | string;
-  toggleWorkModal: (payload: string | null) => void;
+  currentWork: null | Work;
+  setCurrentWork: (payload: WorkSlugs | Work | null) => void;
 }
 
 export const useUiStore = create(
@@ -49,10 +50,14 @@ export const useUiStore = create(
           state.scrollAvailable = payload;
         }),
 
-      workModal: null,
-      toggleWorkModal: payload =>
+      currentWork: null,
+      setCurrentWork: payload =>
         set(state => {
-          state.workModal = payload;
+          if (typeof payload === 'string') {
+            state.currentWork = works.find(v => v.slug === payload) || null;
+          } else {
+            state.currentWork = payload;
+          }
         }),
     })),
     {

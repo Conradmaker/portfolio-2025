@@ -2,30 +2,20 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useUiStore } from '@/modules/zustand/ui';
-import { works } from '@/lib/workData';
+import { WorkSlugs, works } from '@/lib/workData';
 import FilterNav from './ui/filter-nav';
 import WorkModal from './ui/work-modal';
 
-// const mockups = [
-//   'https://framerusercontent.com/images/aJ6jhI6h5jaHZD31aZK9Rj9ZE.png?scale-down-to=1024',
-//   'https://framerusercontent.com/images/fbX0l88J5FUzo32BiZ07WDOv4Ws.png?scale-down-to=1024',
-//   'https://framerusercontent.com/images/J6YhfgPCveOgb1YUftagjmWFnk.png?scale-down-to=1024',
-//   'https://framerusercontent.com/images/LZwYpdZOeveRvsTyIWNrqYprlaE.png?scale-down-to=1024',
-// ];
-
 export default function Work() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [selected, setSelected] = useState<number | null>(null);
-  const { toggleWorkModal, setScrollAvailable } = useUiStore();
-  const onClickWork = (idx: number) => {
-    toggleWorkModal(works[idx].slug);
+  const { setCurrentWork, currentWork, setScrollAvailable } = useUiStore();
+  const onOpenWork = (slug: WorkSlugs) => {
+    setCurrentWork(slug);
     setScrollAvailable(false);
-    setSelected(idx);
   };
   const onCloseWork = () => {
-    toggleWorkModal(null);
+    setCurrentWork(null);
     setScrollAvailable(true);
-    setSelected(null);
   };
 
   const [navOpen, setNavOpen] = useState(false);
@@ -34,26 +24,23 @@ export default function Work() {
     setScrollAvailable(!navMobileCollapsed);
     setNavMobileCollapsed(prev => !prev);
   };
+
   const [currentFilter, setCurrentFilter] = useState<string>('전체');
   const toggleFilter = (f: string) => {
-    setCurrentFilter(prev => {
-      if (prev === f) {
-        return '전체';
-      }
-      return f;
-    });
+    setCurrentFilter(prev => (prev === f ? '전체' : f));
   };
 
   return (
     <>
       <section id="works" className="pt-32 px-4 bg-white relative max-w-[1632px] mx-auto">
-        <div className="lg:flex items-center justify-between">
+        <div className="lg:flex lg:items-end items-center justify-between">
           <h2 className="text-black text-4xl font-semibold lg:text-6xl lg:font-medium leading-tight">
             도전과 혁신으로 완성한 <br /> 압도적인 결과물들
           </h2>
-          <p className="lg:w-[540px] lg:text-2xl mt-2 lg:mt-0">
-            We create user-friendly digital products, which immerse customers into your brand and
-            effectively help achieve your business goals.
+          <p className="lg:w-[540px] lg:text-xl mt-6 lg:mt-0 break-keep leading-relaxed">
+            기획의 궁극적인 목표와 디자인에서 추구하는 가치를 고려하여, 개발자의 관점에서 가장
+            효율적인 방식과 스택을 적용해 빠르고 안정적인 서비스를 정해진 타임라인 내에 확실하게
+            완성시킵니다.
           </p>
         </div>
         <motion.div
@@ -70,15 +57,11 @@ export default function Work() {
                     key={idx}
                     onMouseEnter={() => setHoveredIndex(idx)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    onClick={() => {
-                      if (selected === idx) {
-                        setSelected(null);
-                      } else {
-                        onClickWork(idx);
-                      }
-                    }}
+                    onClick={() =>
+                      currentWork?.slug === v.slug ? onCloseWork() : onOpenWork(v.slug)
+                    }
                   >
-                    {!selected && (
+                    {!currentWork?.slug && (
                       <AnimatePresence>
                         {hoveredIndex === idx && (
                           <motion.span
@@ -102,11 +85,11 @@ export default function Work() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.77 }}
                       transition={{ duration: 0.3 }}
-                      layoutId={`content-${idx}`}
+                      layoutId={`content-${v.slug}`}
                       className="z-10 group/card overflow-hidden h-[350px] sm:h-[540px] p-6 pb-24 w-full bg-[#F7F8FA] rounded-2xl flex flex-col relative"
                     >
                       <div
-                        style={{ opacity: selected === idx ? 0 : 1 }}
+                        style={{ opacity: v.slug === currentWork?.slug ? 0 : 1 }}
                         className="flex-1 flex items-center justify-center px-6 sm:px-0 sm:py-8 cursor-pointer duration-100"
                       >
                         <motion.img
@@ -116,13 +99,26 @@ export default function Work() {
                           className="group-active:animate-ping object-contain sm:object-cover w-full h-full group-hover/card:scale-110 group-hover/card:animate-swim transition-all duration-300"
                         />
                       </div>
+                      <ul className="flex absolute top-0 left-0 p-3 sm:p-6">
+                        {v.filter.map(
+                          (f, idx) =>
+                            idx < 2 && (
+                              <li
+                                className="text-sm min-w-8 text-center py-1 px-2.5 rounded-xl bg-white text-black/60 border-[0.2px] border-black/5 mr-1"
+                                key={idx}
+                              >
+                                {f}
+                              </li>
+                            ),
+                        )}
+                      </ul>
                       <div className="flex flex-col absolute bottom-0 left-0 right-0 p-6">
                         <p className="text-xl font-medium mt-4 mb-0.5">{v.title}</p>
-                        <p className="text-base text-foreground/80">{v.description}</p>
+                        <p className="text-base text-foreground/80">{v.subTitle}</p>
                       </div>
                     </motion.div>
                   </li>
-                  {idx === selected && <WorkModal idx={idx} onClose={onCloseWork} />}
+                  {v.slug === currentWork?.slug && <WorkModal slug={v.slug} onClose={onCloseWork} />}
                 </>
               );
             })}
