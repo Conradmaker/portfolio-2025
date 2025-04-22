@@ -1,4 +1,3 @@
-import FloatingDock from '@/components/ui/nav';
 import FourthSection from './section/Fourth';
 import SecondSection from './section/Second';
 import ThirdSection from './section/Third';
@@ -30,15 +29,6 @@ export default function Home() {
       <SecondSection />
       <ThirdSection />
       <FourthSection />
-      <FloatingDock
-        className="fixed mx-auto bottom-8 self-center z-50"
-        items={[
-          { title: 'asd', icon: <></>, href: '#hero' },
-          { title: 'asd', icon: <></>, href: '#chart' },
-          { title: 'asd', icon: <></>, href: '#merit' },
-          { title: 'asd', icon: <></>, href: '#skill' },
-        ]}
-      />
     </div>
   );
 }
